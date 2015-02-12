@@ -10,6 +10,11 @@ RUN \
     apt-get install -y --no-install-recommends \
       python-libxslt1 \
   && \
+  DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y \
+      default-jre-headless \
+      libreoffice-script-provider-python \
+  && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 	
