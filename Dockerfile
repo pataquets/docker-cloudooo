@@ -1,4 +1,4 @@
-FROM pataquets/ubuntu:trusty
+FROM pataquets/default-jre-headless
 
 RUN \
   apt-get update && \
@@ -12,7 +12,6 @@ RUN \
   && \
   DEBIAN_FRONTEND=noninteractive \
     apt-get install -y \
-      default-jre-headless \
       libreoffice-script-provider-python \
   && \
   apt-get clean && \
