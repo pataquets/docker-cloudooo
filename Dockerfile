@@ -2,7 +2,10 @@ FROM pataquets/default-jre-headless:xenial
 
 RUN \
   apt-key adv --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys 1378B444 && \
-  echo "deb http://ppa.launchpad.net/libreoffice/ppa/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/libreoffice.list && \
+  . /etc/lsb-release && \
+  echo "deb http://ppa.launchpad.net/libreoffice/ppa/ubuntu ${DISTRIB_CODENAME} main" \
+    | tee /etc/apt/sources.list.d/libreoffice.list \
+  && \
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
     apt-get install -y \
